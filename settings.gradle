@@ -1,0 +1,2 @@
+rootProject.name='Interview Integrasi Inti Sinergi'
+include ':app'
