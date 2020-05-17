@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Interview Integrasi Inti Sinergi</string>
+    <string name="content_desc_image">ImageView</string>
+    <string name="title_toolbar_main">Pengumuman</string>
 </resources>
