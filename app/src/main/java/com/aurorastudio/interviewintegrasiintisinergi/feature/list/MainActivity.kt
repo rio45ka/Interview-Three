@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.aurorastudio.interviewintegrasiintisinergi.R
+import com.aurorastudio.interviewintegrasiintisinergi.data.local.SortOptionDao
 import com.aurorastudio.interviewintegrasiintisinergi.databinding.ActivityMainBinding
+import com.aurorastudio.interviewintegrasiintisinergi.feature.list.sort.SortBottomSheetFragment
 import kotlinx.android.synthetic.main.app_bar.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,5 +29,24 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.appbarMain.tvTitleCustomToolbar.text = getString(R.string.title_toolbar_main)
+
+        binding.btnSort.setOnClickListener {
+            val bottomSheet = SortBottomSheetFragment(object : SortBottomSheetFragment.OnOptionSortClick {
+                override fun onClickSort(option: SortOptionDao) {
+                    viewModel.selectedOptionSort(option.id)
+                }
+            }, viewModel.listOptionSort.value!!)
+            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        println("onPause")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        println("onResume")
     }
 }

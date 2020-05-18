@@ -1,6 +1,7 @@
 package com.aurorastudio.interviewintegrasiintisinergi.data
 
 import com.aurorastudio.interviewintegrasiintisinergi.data.local.EventDao
+import com.aurorastudio.interviewintegrasiintisinergi.data.local.SortOptionDao
 
 /**
  *
@@ -25,8 +26,8 @@ class SampleData {
             "Gladi Bersih Lomba Tari",
             "Kevin Himawan",
             "TK Bintang Kecil Jakarta",
-            "2020-12-21 09:00:00",
-            "2020-12-21 10:00:00",
+            "2020-12-25 09:00:00",
+            "2020-12-25 10:00:00",
             "maybe",
             false
         ),
@@ -35,8 +36,8 @@ class SampleData {
             "Gladi Bersih Lomba Tari",
             "Kevin Himawan",
             "TK Bintang Kecil Jakarta",
-            "2020-12-22 09:00:00",
-            "2020-12-22 10:00:00",
+            "2020-12-27 09:00:00",
+            "2020-12-27 10:00:00",
             "maybe",
             false
         ),
@@ -58,7 +59,7 @@ class SampleData {
             "2020-12-23 09:00:00",
             "2020-12-23 10:00:00",
             "maybe",
-            false
+            true
         ),
         EventDao(
             "6",
@@ -78,6 +79,24 @@ class SampleData {
             "2020-12-24 09:00:00",
             "2020-12-24 10:00:00",
             "maybe",
+            true
+        )
+    )
+
+    val listSortOptionSample = listOf<SortOptionDao>(
+        SortOptionDao(
+            "Terbaru dibagikan",
+            "1",
+            false
+        ),
+        SortOptionDao(
+            "Tanggal kegiatan terdekat",
+            "2",
+            false
+        ),
+        SortOptionDao(
+            "Belum dibaca",
+            "3",
             false
         )
     )
