@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="event"
+            type="com.aurorastudio.interviewintegrasiintisinergi.data.local.EventDao" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:elevation="2dp"
+        app:cardPreventCornerOverlap="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/tv_title_item_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:text="@{event.title}"
+                android:textColor="@color/primaryText"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Gladi Bersih Lomba Tari" />
+
+            <ImageView
+                android:id="@+id/iv_item_confirm_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:visibility="@{event.attendance ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_item_event"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_item_event"
+                app:srcCompat="@drawable/ic_v_circle_blue" />
+
+            <ImageView
+                android:id="@+id/iv_kids"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_name_kids"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_name_kids"
+                app:srcCompat="@drawable/ic_v_kids" />
+
+            <TextView
+                android:id="@+id/tv_name_kids"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="15dp"
+                android:text="@{event.nameStudent}"
+                android:textColor="@color/secondaryText"
+                app:layout_constraintStart_toEndOf="@+id/iv_kids"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_item_event"
+                tools:text="Kevin Himawan" />
+
+            <TextView
+                android:id="@+id/tv_item_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:text="@{event.school}"
+                android:textColor="@color/secondaryText"
+                app:layout_constraintStart_toEndOf="@+id/iv_school"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_kids"
+                tools:text="TK Jakarta" />
+
+            <ImageView
+                android:id="@+id/iv_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_item_school"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_item_school"
+                app:srcCompat="@drawable/ic_v_school" />
+
+            <TextView
+                android:id="@+id/tv_date_item_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                app:setDateEvent="@{event}"
+                android:textColor="@color/secondaryText"
+                app:layout_constraintStart_toEndOf="@+id/iv_date"
+                app:layout_constraintTop_toBottomOf="@+id/tv_item_school"
+                tools:text="20 Desember" />
+
+            <ImageView
+                android:id="@+id/iv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_date_item_event"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_date_item_event"
+                app:srcCompat="@drawable/ic_v_date" />
+
+            <TextView
+                android:id="@+id/tv_item_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                app:setTimeEvent="@{event}"
+                android:textColor="@color/secondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_item_school"
+                tools:text="09.00 - 10.00" />
+
+            <ImageView
+                android:id="@+id/iv_time_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_item_hour"
+                app:layout_constraintEnd_toStartOf="@+id/tv_item_hour"
+                app:layout_constraintTop_toTopOf="@+id/tv_item_hour"
+                app:srcCompat="@drawable/ic_v_time" />
+
+            <FrameLayout
+                android:id="@+id/fl_content_attendance"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="@{event.attendance ? View.VISIBLE : View.GONE}"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_item_event">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/white"
+                    android:text="@string/confirm_attendance"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_content_not_attendance"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="@{event.attendance ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_item_event">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="top"
+                    android:background="@color/secondaryText"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textColor="@color/orangeText"
+                    android:text="@string/maybe_attendance"/>
+
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
