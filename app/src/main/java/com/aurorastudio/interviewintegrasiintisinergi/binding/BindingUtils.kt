@@ -25,6 +25,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<EventDao>?) {
     adapter.submitList(data)
 }
 
+
 @BindingAdapter("listDataSort")
 fun bindRecyclerViewSort(recyclerView: RecyclerView, data: List<SortOptionDao>?) {
     val adapter = recyclerView.adapter as SortOptionAdapter
@@ -46,6 +47,7 @@ fun TextView.setTimeEventText(item: EventDao?) {
         text = formatTimeEvent(item.dateEventStart, item.dateEventFinish)
     }
 }
+
 
 @BindingAdapter("toggleIconSort")
 fun bindStatusOptionSort(statusImageView: ImageView, status: SortOptionDao?) {

@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -27,26 +26,17 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.listEvent.adapter = EventListAdapter()
 
-
         binding.appbarMain.tvTitleCustomToolbar.text = getString(R.string.title_toolbar_main)
 
         binding.btnSort.setOnClickListener {
             val bottomSheet = SortBottomSheetFragment(object : SortBottomSheetFragment.OnOptionSortClick {
                 override fun onClickSort(option: SortOptionDao) {
                     viewModel.selectedOptionSort(option.id)
+                    binding.listEvent.smoothScrollToPosition(0)
                 }
             }, viewModel.listOptionSort.value!!)
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        println("onPause")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        println("onResume")
-    }
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.aurorastudio.interviewintegrasiintisinergi.data.SampleData
 import com.aurorastudio.interviewintegrasiintisinergi.data.local.EventDao
 import com.aurorastudio.interviewintegrasiintisinergi.data.local.SortOptionDao
+import java.time.LocalDate
 
 /**
  *
@@ -25,8 +26,8 @@ class MainViewModel: ViewModel() {
 
     init {
         listEvent.addAll(SampleData().listEventSample)
-        _listOptionSort.value = SampleData().listSortOptionSample
         _listData.value = listEvent
+        resetOptionSort()
     }
 
     fun selectedOptionSort(id: String) {
@@ -34,12 +35,32 @@ class MainViewModel: ViewModel() {
         val list = _listOptionSort.value
         list?.find { it.id == id }?.selected = true
         _listOptionSort.value = list
+
+        actionSortEvent(id.toInt())
     }
 
     private fun resetOptionSort() {
-        val list = _listOptionSort.value
-        list?.find { it.selected }?.selected = false
-        _listOptionSort.value = list
+        _listOptionSort.value = SampleData().listSortOptionSample
+    }
+
+    private fun sortByDate() {
+        val list = listEvent
+        val sorted = list.sortedBy { it.dateTimeStart }
+        _listData.value = sorted
+    }
+
+    private fun sortByIsRead() {
+        val list = listEvent
+        val sorted = list.sortedBy { it.isRead }
+        _listData.value = sorted
+    }
+
+    private fun actionSortEvent(type: Int) {
+        when (type) {
+            1 -> _listData.value = listEvent
+            2 -> sortByDate()
+            3 -> sortByIsRead()
+        }
     }
 
 

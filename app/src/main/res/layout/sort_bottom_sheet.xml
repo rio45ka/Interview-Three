@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         app:behavior_hideable="true"
         app:behavior_peekHeight="56dp"
-        android:paddingBottom="20dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <TextView

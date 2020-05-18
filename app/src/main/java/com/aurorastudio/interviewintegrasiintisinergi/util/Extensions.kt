@@ -29,6 +29,17 @@ internal fun formatDate(inputDate: String): String {
     return outputDate
 }
 
+internal fun convertStringToDate(inputDate: String): Date? {
+    var parsed: Date? = Date()
+    val dfInput = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", getLocalId())
+    try {
+        parsed = dfInput.parse(inputDate)
+    } catch (e: ParseException) {
+        println("${e.message}")
+    }
+    return parsed
+}
+
 internal fun formatTimeEvent(inputDateStart: String, inputDateFinish: String): String {
     var result = ""
     val dfInput = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", getLocalId())

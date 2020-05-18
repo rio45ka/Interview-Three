@@ -1,7 +1,10 @@
 package com.aurorastudio.interviewintegrasiintisinergi.data.local
 
 import android.os.Parcelable
+import com.aurorastudio.interviewintegrasiintisinergi.util.convertStringToDate
+import com.aurorastudio.interviewintegrasiintisinergi.util.formatDate
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
 /**
  *
@@ -30,4 +33,5 @@ data class EventDao(
 
 ): Parcelable {
     val isAttendance: Boolean get() = confirmationOfAttendance == "yes"
+    val dateTimeStart: Date get() = convertStringToDate(dateEventStart)!!
 }
