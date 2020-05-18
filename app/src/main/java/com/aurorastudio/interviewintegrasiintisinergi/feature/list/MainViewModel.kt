@@ -24,10 +24,15 @@ class MainViewModel: ViewModel() {
     private val _listOptionSort = MutableLiveData<List<SortOptionDao>>()
     val listOptionSort: LiveData<List<SortOptionDao>> get() = _listOptionSort
 
+    private val _statusSort = MutableLiveData<Int>()
+    val statusSort: LiveData<Int> get() = _statusSort
+
     init {
         listEvent.addAll(SampleData().listEventSample)
         _listData.value = listEvent
         resetOptionSort()
+
+        _statusSort.value = -1
     }
 
     fun selectedOptionSort(id: String) {
@@ -56,11 +61,16 @@ class MainViewModel: ViewModel() {
     }
 
     private fun actionSortEvent(type: Int) {
+        updateStatusSort(type)
         when (type) {
             1 -> _listData.value = listEvent
             2 -> sortByDate()
             3 -> sortByIsRead()
         }
+    }
+
+    private fun updateStatusSort(type: Int) {
+        _statusSort.value = type
     }
 
 

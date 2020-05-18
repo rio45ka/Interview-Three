@@ -3,6 +3,7 @@ package com.aurorastudio.interviewintegrasiintisinergi.binding
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.marginTop
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.aurorastudio.interviewintegrasiintisinergi.R
@@ -47,6 +48,22 @@ fun TextView.setTimeEventText(item: EventDao?) {
         text = formatTimeEvent(item.dateEventStart, item.dateEventFinish)
     }
 }
+
+
+@BindingAdapter("setTitleSort")
+fun TextView.setTitleSort(type: Int) {
+    if (type == -1) {
+        visibility = View.GONE
+    } else {
+        visibility = View.VISIBLE
+        when(type) {
+            1 -> text = context.getString(R.string.sort_type_1)
+            2 -> text = context.getString(R.string.sort_type_2)
+            3 -> text = context.getString(R.string.sort_type_3)
+        }
+    }
+}
+
 
 
 @BindingAdapter("toggleIconSort")

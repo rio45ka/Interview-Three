@@ -5,4 +5,7 @@
     <string name="confirm_attendance">Konfirmasi Kedatangan</string>
     <string name="maybe_attendance">Mungkin Hadir</string>
     <string name="sort">Urutkan</string>
+    <string name="sort_type_1">Urut berdasarkan \"Terbaru dibagikan\"</string>
+    <string name="sort_type_2">Urut berdasarkan \"Tanggal kegiatan terdekat\"</string>
+    <string name="sort_type_3">Urut berdasarkan \"Belum dibaca\"</string>
 </resources>
