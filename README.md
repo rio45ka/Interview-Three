@@ -3,6 +3,9 @@
 Repo for test to get job for Android Developer at PT Integrasi Inti Sinergi
 
 
-![Screenshots](https://github.com/rio45ka/Interview-Three/blob/master/screenshots/1.png)
+## Screenshot
 
-![Screenshots](https://github.com/rio45ka/Interview-Three/tree/master/screenshots/2.png)
+<img src="https://github.com/rio45ka/Interview-Three/blob/master/screenshots/1.png" width="365" height="650">
+
+
+<img src="https://github.com/rio45ka/Interview-Three/blob/master/screenshots/2.png" width="365" height="650">
