@@ -42,6 +42,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    testOptions.unitTests {
+        includeAndroidResources = true
+    }
+
 }
 
 dependencies {
@@ -68,7 +72,21 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
 
+    // Testing
     testImplementation 'junit:junit:4.12'
+    testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
+    testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+
+    // AndroidX Test - Instrumented testing
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Mockito
+    testImplementation 'org.mockito:mockito-core:3.2.4'
+    testImplementation 'org.mockito:mockito-inline:2.27.0'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC3'
+    androidTestImplementation 'org.mockito:mockito-android:2.25.0'
 }
