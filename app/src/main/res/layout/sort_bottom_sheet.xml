@@ -7,7 +7,7 @@
 
         <variable
             name="sortViewModel"
-            type="com.aurorastudio.interviewintegrasiintisinergi.feature.list.sort.SortOptionViewModel" />
+            type="com.aurorastudio.interviewintegrasiintisinergi.feature.list.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,7 +59,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/divider_bottom_sheet"
             tools:itemCount="3"
-            app:listDataSort="@{sortViewModel.listOption}"
+            app:listDataSort="@{sortViewModel.listOptionSort}"
             tools:listitem="@layout/item_option_sort" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

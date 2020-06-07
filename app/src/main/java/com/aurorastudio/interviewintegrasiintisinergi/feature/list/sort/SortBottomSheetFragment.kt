@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.aurorastudio.interviewintegrasiintisinergi.R
 import com.aurorastudio.interviewintegrasiintisinergi.data.local.SortOptionDao
@@ -22,8 +23,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
  * Email rio.aska35@gmail.com
  *
  */
-class SortBottomSheetFragment(private val clickListener: OnOptionSortClick,
-                              private val list: List<SortOptionDao>) : BottomSheetDialogFragment() {
+class SortBottomSheetFragment : BottomSheetDialogFragment() {
+
+    private lateinit var viewModel: MainViewModel
 
     override fun getTheme(): Int = R.style.BottomSheetDialogTheme
 
@@ -39,14 +41,13 @@ class SortBottomSheetFragment(private val clickListener: OnOptionSortClick,
         val binding: SortBottomSheetBinding = DataBindingUtil.inflate(inflater
             , R.layout.sort_bottom_sheet, container, false)
 
-        val viewModel = ViewModelProviders.of(this).get(SortOptionViewModel::class.java)
+        val viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
 
-        viewModel.listOption.value = list
         binding.sortViewModel = viewModel
         binding.lifecycleOwner = this
 
         binding.listSortOption.adapter = SortOptionAdapter(OnClickListener {
-            clickListener.onClickSort(it)
+            viewModel.selectedOptionSort(it.id)
             dismiss()
         })
 
@@ -55,10 +56,6 @@ class SortBottomSheetFragment(private val clickListener: OnOptionSortClick,
         }
 
         return binding.root
-    }
-
-    interface OnOptionSortClick {
-        fun onClickSort(option: SortOptionDao)
     }
 
 }
